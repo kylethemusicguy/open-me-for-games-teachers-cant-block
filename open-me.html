@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oops, you've been rickrolled!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            color: white;
+            background-color: black;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 40px;
+        }
+        iframe {
+            border: none;
+            width: 560px;
+            height: 315px;
+            margin: 20px;
+        }
+    </style>
+    <script>
+        // Random screen rotation function
+        function rotateScreen() {
+            const rotations = ['rotate(90deg)', 'rotate(180deg)', 'rotate(270deg)', 'rotate(0deg)'];
+            let index = Math.floor(Math.random() * rotations.length);
+            document.body.style.transform = rotations[index];
+            document.body.style.transition = 'transform 0.5s ease';
+        }
+
+        // Function to embed a new rickroll iframe
+        function openRickroll() {
+            const iframe = document.createElement('iframe');
+            iframe.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"; // Auto plays the video
+            document.body.appendChild(iframe);
+            rotateScreen();  // Rotate screen on each new iframe
+        }
+
+        // Infinite Rickroll function (opens new iframe every 500ms)
+        function infiniteRickroll() {
+            setInterval(openRickroll, 500); // Adds a new iframe every 500ms
+        }
+
+        // Trigger the prank as soon as the page loads
+        window.onload = infiniteRickroll;
+    </script>
+</head>
+<body>
+    <h1>Oops! You've been rickrolled!</h1>
+    <p>Enjoy the ride!</p>
+</body>
+</html>
