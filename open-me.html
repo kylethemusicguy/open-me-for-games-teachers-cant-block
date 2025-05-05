@@ -16,6 +16,11 @@
         h1 {
             font-size: 40px;
         }
+        video {
+            width: 100%;
+            height: auto;
+            max-width: 800px;
+        }
     </style>
     <script>
         // Variable to keep track of the current rotation angle
@@ -57,5 +62,11 @@
 <body>
     <h1>Oops! You've been rickrolled!</h1>
     <p>Enjoy the ride!</p>
+
+    <!-- Embed the MP4 video -->
+    <video controls autoplay>
+        <source src="open-me.mp4" type="video/mp4"> <!-- Replace with your relative file path -->
+        Your browser does not support the video tag.
+    </video>
 </body>
 </html>
